@@ -131,3 +131,23 @@ This stage focused on exposing our database models through a RESTful API using D
   "name": "Electronics",
   "description": "Devices and gadgets"
 }
+
+# 🔐 Stage 3 — Authentication (JWT)
+
+This stage introduces **secure user authentication** to the API using **JWT (JSON Web Tokens)** powered by [Django REST Framework SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/).
+
+---
+
+## ✅ Features
+- Secure login with **JWT access & refresh tokens**
+- Token refresh endpoint for session renewal
+- Protected route `/api/users/` accessible only with a valid JWT
+- Centralized authentication middleware using DRF + SimpleJWT
+
+---
+
+## ⚙️ Setup
+
+### 1. Install dependencies
+```bash
+pip install djangorestframework-simplejwt

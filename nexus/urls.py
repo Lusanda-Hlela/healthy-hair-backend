@@ -20,16 +20,22 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-from accounts.views import UserListView
+from accounts.views import (
+    UserListView,
+    RegisterView,
+    LogoutView,
+)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('store.urls')),
+    path("admin/", admin.site.urls),
+    path("api/", include("store.urls")),
     
     # JWT Authentication
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
+    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/logout/", LogoutView.as_view(), name="logout"),
+    
     # User Management
-    path('api/users/', UserListView.as_view(), name='user-list'),
+    path('api/register/', RegisterView.as_view(), name='register'),
+    path("api/users/", UserListView.as_view(), name="user-list"),
 ]

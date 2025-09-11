@@ -1,0 +1,453 @@
+{
+	"info": {
+		"_postman_id": "51bb85dd-b2f8-4438-8825-347f536b0eb2",
+		"name": "ProjectNexus API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38345306"
+	},
+	"item": [
+		{
+			"name": "Get Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/categories/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"categories",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Category",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Electronics 2\",\r\n  \"description\": \"Devices and gadgets\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/categories/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"categories",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/products/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Products",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Laptop\",\r\n  \"description\": \"14-inch lightweight laptop\",\r\n  \"price\": 999.99\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/products/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Orders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": 1,\r\n  \"product\": 1,\r\n  \"rating\": 5,\r\n  \"comment\": \"Excellent product!\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/orders/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Orders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/orders/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": 1,\r\n  \"total_price\": 0.0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/orders/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Reviews",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/reviews/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"reviews",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Review",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": 1,\r\n  \"product\": 1,\r\n  \"rating\": 5,\r\n  \"comment\": \"Excellent product!\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/reviews/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"reviews",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get JWT Token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"testuser\",\r\n  \"password\": \"mypassword123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/token/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU3NjI0NjA5LCJpYXQiOjE3NTc2MjQzMDksImp0aSI6IjJiMWNmYWE2OTMzYjQ5OTk4MjVjNTI0ZjU3ZGMzMmI5IiwidXNlcl9pZCI6Mn0.GOAmeGWebNRSkPwWTSG-I0jiIVGPw4RU_AIqrh_o3iY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/users/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NzcxMDcwOSwiaWF0IjoxNzU3NjI0MzA5LCJqdGkiOiI5MzkzZTQ5NzMyMGY0MzM5ODYyYTFmYzkzYTZjMTc0YyIsInVzZXJfaWQiOjJ9.JO5i0THjSlzKb2mLmZWW-P4RwjShGMcPjRdPVn_Ddlw\" }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/token/refresh/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register a New User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"testuser\",\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"mypassword123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/register/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout (Blacklist Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU3NjI1MDUxLCJpYXQiOjE3NTc2MjQzMDksImp0aSI6IjI5MzI3Y2NkOTc4MzRlYTQ5M2U5YmM4MTQ3NDdmNDBhIiwidXNlcl9pZCI6Mn0.Zz6lpjzn-HwPK4CxMmGgtzXgHQo-6s-nNHswlBHAzjc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NzcxMDcwOSwiaWF0IjoxNzU3NjI0MzA5LCJqdGkiOiI5MzkzZTQ5NzMyMGY0MzM5ODYyYTFmYzkzYTZjMTc0YyIsInVzZXJfaWQiOjJ9.JO5i0THjSlzKb2mLmZWW-P4RwjShGMcPjRdPVn_Ddlw\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/logout/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "string"
+		}
+	]
+}

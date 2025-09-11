@@ -151,3 +151,36 @@ This stage introduces **secure user authentication** to the API using **JWT (JSO
 ### 1. Install dependencies
 ```bash
 pip install djangorestframework-simplejwt
+
+
+# Project Nexus - Django REST API
+
+A backend project built with **Django** and **Django REST Framework (DRF)**, featuring JWT authentication for secure API access.  
+
+---
+
+## 🚀 Features
+- User registration and authentication  
+- JWT-based login (access & refresh tokens)  
+- Protected API endpoints with token validation  
+- Environment variable management with `django-environ`  
+- API documentation with **Swagger** (`drf-yasg`)  
+
+---
+
+## 🛠️ Tech Stack
+- Python 3.12  
+- Django 5.2.6  
+- Django REST Framework  
+- Simple JWT  
+- PostgreSQL (with psycopg2-binary)  
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone the repository
+```bash
+git clone <your-repo-url>
+cd alx-project-nexus
+

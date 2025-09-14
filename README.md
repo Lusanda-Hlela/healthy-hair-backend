@@ -1,186 +1,103 @@
-# Project Nexus
-
-## Stage 1: Environment Setup ✅
-
-In this stage, we prepared our development environment for building the Django + PostgreSQL API project.
-
-### Key Steps Completed:
-
-1. **Installed Tools**
-
-   - Python 3.11+
-   - PostgreSQL (running on port 5433)
-   - VS Code (IDE)
-   - Git Bash (terminal)
-   - Django + Dependencies (via `pip install`)
-
-2. **Created Django Project**
-
-   - Started a new project called `nexus`
-   - Verified setup with Django’s default server page
-
-3. **Configured PostgreSQL**
-
-   - Created a database named `nexus_db`
-   - Connected Django to PostgreSQL using environment variables stored in a `.env` file
-
-4. **Environment Variables**
-
-   - Used `python-decouple` to load sensitive values
-   - Example `.env`:
-     ```env
-     SECRET_KEY=your-secret-key
-     DEBUG=True
-     DB_NAME=nexus_db
-     DB_USER=postgres
-     DB_PASSWORD=yourpassword
-     DB_HOST=localhost
-     DB_PORT=5433
-     ```
-
-5. **Version Control**
-   - Initialized Git repository
-   - Added `.gitignore` to exclude sensitive files (like `.env` and `__pycache__`)
-
-### Testing Completed:
-
-- ✅ `python manage.py migrate` → ran successfully, created default tables in PostgreSQL
-- ✅ `python manage.py runserver` → opened Django welcome page at `http://127.0.0.1:8000`
-
----
-
-## Stage 2: Database Design + Django Models
-
-### Entity Relationship Diagram (ERD)
-We designed the data structure using an ERD that covers the main business entities:
-- **Users**: Customers who register and interact with the system.
-- **Products & Categories**: Products grouped under categories, with support for multiple images.
-- **Orders & Order Items**: Tracks purchases, quantities, and total order pricing.
-- **Reviews**: User feedback on products.
-
-📌 Data Flow:
-- User → Order → OrderItem → Product (purchase pipeline).
-- User → Review → Product (feedback pipeline).
-- Category ↔ Product ↔ ProductImage (catalog structure).
-
-### Django Models
-The ERD was translated into Django models within the `store` app:
-- `Category`, `Product`, `ProductCategory` (many-to-many relationship)
-- `ProductImage`
-- `Review`
-- `Order`, `OrderItem`
-
-### Steps Completed
-1. Added `store` to `INSTALLED_APPS`.
-2. Defined models in `store/models.py` based on ERD.
-3. Ran migrations to create PostgreSQL tables.
-4. Verified by inserting sample data using the Django shell.
-
-### Admin Setup (Optional but Recommended)
-1. Created a superuser using:
-   ```bash
-   python manage.py createsuperuser
-
-
-## Stage 3: API Development + Testing
-
-### Overview
-This stage focused on exposing our database models through a RESTful API using Django REST Framework (DRF). These APIs allow frontend applications, mobile clients, or external systems to interact with the backend.
-
----
-
-### Key Elements
-1. **Django REST Framework Setup**
-   - Added `rest_framework` to `INSTALLED_APPS`.
-   - Created serializers for each model.
-   - Built ViewSets for CRUD operations.
-   - Configured a `DefaultRouter` to auto-generate REST endpoints.
-
-2. **Endpoints**
-   - All APIs are prefixed with `/api/`.
-   - Example:
-     - `GET /api/categories/`
-     - `POST /api/products/`
-     - `GET /api/orders/`
-
-3. **Testing**
-   - Automated tests created with Django’s `APITestCase`.
-   - Manual validation performed using **Postman**:
-     - `GET` endpoints return lists of records.
-     - `POST` endpoints create new records.
-     - `PUT/PATCH/DELETE` allow updates and deletions.
-
----
-
-### Example API Workflow
-- **User browsing products**:  
-  `GET /api/products/` → returns product catalog.  
-
-- **Placing an order**:  
-  `POST /api/orders/` → creates new order linked to user.  
-
-- **Leaving a review**:  
-  `POST /api/reviews/` → adds feedback tied to product and user.  
-
----
-
-### Example JSON Response
-```json
-{
-  "id": 1,
-  "name": "Electronics",
-  "description": "Devices and gadgets"
-}
-
-# 🔐 Stage 3 — Authentication (JWT)
-
-This stage introduces **secure user authentication** to the API using **JWT (JSON Web Tokens)** powered by [Django REST Framework SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/).
-
----
-
-## ✅ Features
-- Secure login with **JWT access & refresh tokens**
-- Token refresh endpoint for session renewal
-- Protected route `/api/users/` accessible only with a valid JWT
-- Centralized authentication middleware using DRF + SimpleJWT
-
----
-
-## ⚙️ Setup
-
-### 1. Install dependencies
-```bash
-pip install djangorestframework-simplejwt
-
-
 # Project Nexus - Django REST API
 
-A backend project built with **Django** and **Django REST Framework (DRF)**, featuring JWT authentication for secure API access.  
+A backend project built with **Django** and **Django REST Framework (DRF)**, featuring JWT authentication, PostgreSQL integration, and API documentation.  
 
 ---
 
 ## 🚀 Features
-- User registration and authentication  
+- User registration & authentication  
 - JWT-based login (access & refresh tokens)  
 - Protected API endpoints with token validation  
-- Environment variable management with `django-environ`  
+- PostgreSQL database integration  
+- Environment variable management with `python-decouple`  
 - API documentation with **Swagger** (`drf-yasg`)  
 
 ---
 
 ## 🛠️ Tech Stack
-- Python 3.12  
-- Django 5.2.6  
+- Python 3.11+  
+- Django 5.x  
 - Django REST Framework  
 - Simple JWT  
 - PostgreSQL (with psycopg2-binary)  
+- drf-yasg (Swagger UI)  
 
 ---
 
-## ⚙️ Setup Instructions
+# ✅ Stages Completed
+
+## Stage 1: Environment Setup
+1. Installed tools: Python, PostgreSQL (port 5433), VS Code, Git Bash.  
+2. Created Django project `nexus`.  
+3. Configured PostgreSQL with `.env` file using `python-decouple`.  
+4. Ran initial migrations & verified Django welcome page.  
+5. Added `.gitignore` for sensitive files.  
+
+**Testing:**  
+- ✅ `python manage.py migrate`  
+- ✅ `python manage.py runserver`  
+
+---
+
+## Stage 2: Database Design + Django Models
+- Designed ERD covering Users, Products, Categories, Orders, Order Items, Reviews.  
+- Implemented models in `store/models.py`:  
+  - `Category`, `Product`, `ProductCategory`, `ProductImage`, `Review`, `Order`, `OrderItem`  
+- Added `store` to `INSTALLED_APPS`.  
+- Ran migrations & tested with Django shell.  
+- Superuser created for Django Admin.  
+
+---
+
+## Stage 3: API Development + Testing
+- Integrated **Django REST Framework**.  
+- Built serializers & ViewSets for CRUD.  
+- Configured `DefaultRouter` → auto-generated `/api/` endpoints.  
+- Tested endpoints with **APITestCase** and Postman.  
+
+**Example Endpoints:**  
+- `GET /api/products/` → product list  
+- `POST /api/orders/` → create new order  
+- `POST /api/reviews/` → leave feedback  
+
+---
+
+## Stage 4: Authentication (JWT)
+- Added **Simple JWT** for secure authentication.  
+- Implemented login, refresh, and protected routes.  
+- Example: `/api/token/` (login), `/api/token/refresh/`, `/api/users/` (protected).  
+
+**Testing:**  
+- Login with credentials returns **access & refresh tokens**.  
+- Protected endpoints accessible only with valid JWT.  
+
+---
+
+## Stage 5: API Documentation (Swagger)
+- Installed and configured **drf-yasg**.  
+- Auto-generated API documentation available at:  
+  - Swagger UI → `http://127.0.0.1:8000/swagger/`  
+  - ReDoc → `http://127.0.0.1:8000/redoc/`  
+
+**Features:**  
+- Interactive API testing from browser.  
+- Auto-updates with new endpoints.  
+
+---
+
+## Stage 6: Frontend Integration (🚧 Upcoming)
+- This stage will focus on connecting the Django backend to a **React frontend**.  
+- Planned features:  
+  - React app using **Vite**  
+  - API consumption with **Axios**  
+  - JWT token storage & automatic refresh  
+  - UI for login, product browsing, ordering, and reviews  
+
+---
+
+# ⚙️ Setup Instructions
 
 ### 1️⃣ Clone the repository
 ```bash
 git clone <your-repo-url>
 cd alx-project-nexus
-

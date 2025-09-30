@@ -85,12 +85,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "nexus.wsgi.application"
 
-# ✅ Database: Render first, fallback to local .env
+# ✅ Database: use Render DATABASE_URL first, fallback to local env vars
 DATABASES = {
     "default": dj_database_url.config(
-        default=f"postgres://{config('DB_USER')}:{config('DB_PASSWORD')}@{config('DB_HOST')}:{config('DB_PORT')}/{config('DB_NAME')}",
+        default=config(
+            "DATABASE_URL",
+            default=f"postgres://{config('DB_USER', default='')}:"
+            f"{config('DB_PASSWORD', default='')}@"
+            f"{config('DB_HOST', default='localhost')}:"
+            f"{config('DB_PORT', default='5432')}/"
+            f"{config('DB_NAME', default='nexus_db')}",
+        ),
         conn_max_age=600,
-        ssl_require=False,
+        ssl_require=True,  # Render requires SSL
     )
 }
 

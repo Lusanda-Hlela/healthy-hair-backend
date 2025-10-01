@@ -1,10 +1,22 @@
 [
   {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "demo_user",
+      "password": "pbkdf2_sha256$260000$5W6n8c9XYRZCwX9Y9LmHRX$eutJ7sn7yC3uJ8Kyyq/8n0XgDNfOZ7Xp6cM3xixuD8o=",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
     "model": "store.category",
     "pk": 1,
     "fields": {
       "name": "Shampoos",
-      "description": "Premium quality shampoos for all hair types"
+      "description": "Hair cleansing products",
+      "slug": "shampoos"
     }
   },
   {
@@ -12,7 +24,8 @@
     "pk": 2,
     "fields": {
       "name": "Conditioners",
-      "description": "Hydrating conditioners for smooth and shiny hair"
+      "description": "Hair moisturizing products",
+      "slug": "conditioners"
     }
   },
   {
@@ -20,112 +33,183 @@
     "pk": 3,
     "fields": {
       "name": "Styling",
-      "description": "Gels, creams, and sprays to style your hair"
+      "description": "Hair gels and styling products",
+      "slug": "styling"
     }
   },
   {
-    "model": "store.productcategory",
-    "pk": 1,
+    "model": "store.category",
+    "pk": 4,
     "fields": {
-      "category": 1,
-      "name": "Luxury Shampoo"
+      "name": "Luxury",
+      "description": "Premium hair care products",
+      "slug": "luxury"
     }
   },
   {
-    "model": "store.productcategory",
-    "pk": 2,
+    "model": "store.category",
+    "pk": 5,
     "fields": {
-      "category": 2,
-      "name": "Premium Conditioner"
-    }
-  },
-  {
-    "model": "store.productcategory",
-    "pk": 3,
-    "fields": {
-      "category": 3,
-      "name": "Styling Gel"
+      "name": "Bundles",
+      "description": "Product bundles and sets",
+      "slug": "bundles"
     }
   },
   {
     "model": "store.product",
     "pk": 1,
     "fields": {
-      "product_category": 1,
-      "name": "Luxury Shampoo 250ml",
-      "description": "A nourishing shampoo enriched with natural extracts",
-      "price": "120.00",
-      "stock": 100
+      "sku": "SKU-SHAMPOO-001",
+      "name": "Luxury Shampoo",
+      "description": "Gentle cleansing shampoo with natural extracts.",
+      "price": "19.99",
+      "stock_quantity": 50
     }
   },
   {
     "model": "store.product",
     "pk": 2,
     "fields": {
-      "product_category": 2,
-      "name": "Premium Conditioner 250ml",
-      "description": "Hydrating conditioner that leaves hair silky smooth",
-      "price": "150.00",
-      "stock": 80
+      "sku": "SKU-CONDITIONER-001",
+      "name": "Premium Conditioner",
+      "description": "Moisturizing conditioner for silky smooth hair.",
+      "price": "24.99",
+      "stock_quantity": 40
     }
   },
   {
     "model": "store.product",
     "pk": 3,
     "fields": {
-      "product_category": 3,
-      "name": "Strong Hold Styling Gel 100ml",
-      "description": "Keeps your hairstyle in place all day long",
-      "price": "90.00",
-      "stock": 200
+      "sku": "SKU-GEL-001",
+      "name": "Styling Gel",
+      "description": "Strong hold styling gel for everyday looks.",
+      "price": "14.99",
+      "stock_quantity": 100
     }
   },
   {
-    "model": "store.review",
+    "model": "store.product",
+    "pk": 4,
+    "fields": {
+      "sku": "SKU-BUNDLE-001",
+      "name": "Shampoo + Conditioner Bundle",
+      "description": "Perfect pair bundle for complete hair care.",
+      "price": "39.99",
+      "stock_quantity": 25
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 5,
+    "fields": {
+      "sku": "SKU-LUXURY-SET-001",
+      "name": "Luxury Hair Set",
+      "description": "Exclusive luxury bundle with shampoo, conditioner, and gel.",
+      "price": "69.99",
+      "stock_quantity": 10
+    }
+  },
+  {
+    "model": "store.productcategory",
     "pk": 1,
     "fields": {
       "product": 1,
-      "rating": 5,
-      "comment": "Amazing shampoo! My hair feels so soft.",
-      "created_at": "2025-09-01T10:00:00Z"
+      "category": 1
     }
   },
   {
-    "model": "store.review",
+    "model": "store.productcategory",
     "pk": 2,
     "fields": {
       "product": 2,
-      "rating": 4,
-      "comment": "Very hydrating, I love it.",
-      "created_at": "2025-09-05T12:00:00Z"
+      "category": 2
     }
   },
   {
-    "model": "store.order",
-    "pk": 1,
+    "model": "store.productcategory",
+    "pk": 3,
     "fields": {
-      "created_at": "2025-09-20T14:00:00Z",
-      "status": "Pending"
+      "product": 3,
+      "category": 3
     }
   },
   {
-    "model": "store.orderitem",
+    "model": "store.productcategory",
+    "pk": 4,
+    "fields": {
+      "product": 4,
+      "category": 5
+    }
+  },
+  {
+    "model": "store.productcategory",
+    "pk": 5,
+    "fields": {
+      "product": 5,
+      "category": 4
+    }
+  },
+  {
+    "model": "store.productimage",
     "pk": 1,
     "fields": {
-      "order": 1,
       "product": 1,
-      "quantity": 2,
-      "price": "240.00"
+      "image_url": "/static/assets/luxury-shampoo.jpg"
     }
   },
   {
-    "model": "store.orderitem",
+    "model": "store.productimage",
     "pk": 2,
     "fields": {
-      "order": 1,
+      "product": 2,
+      "image_url": "/static/assets/premium-conditioner.jpg"
+    }
+  },
+  {
+    "model": "store.productimage",
+    "pk": 3,
+    "fields": {
       "product": 3,
-      "quantity": 1,
-      "price": "90.00"
+      "image_url": "/static/assets/styling-gel.jpg"
+    }
+  },
+  {
+    "model": "store.productimage",
+    "pk": 4,
+    "fields": {
+      "product": 4,
+      "image_url": "/static/assets/category-shampoos.jpg"
+    }
+  },
+  {
+    "model": "store.productimage",
+    "pk": 5,
+    "fields": {
+      "product": 5,
+      "image_url": "/static/assets/category-conditioners.jpg"
+    }
+  },
+  {
+    "model": "store.review",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "product": 1,
+      "rating": 5,
+      "comment": "Amazing shampoo, leaves hair soft and shiny!",
+      "date_created": "2025-09-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "store.review",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "product": 2,
+      "rating": 4,
+      "comment": "Great conditioner, but a bit pricey.",
+      "date_created": "2025-09-02T12:00:00Z"
     }
   }
 ]

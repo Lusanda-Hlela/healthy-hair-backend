@@ -9,6 +9,7 @@ __pycache__/
 env/
 virt/
 *.env
+*.env.production
 
 # Django stuff
 *.log

@@ -6,37 +6,48 @@ A backend project built with **Django** and **Django REST Framework (DRF)**, fea
 
 ## 🛍️ Project Overview  
 
-This case study focuses on developing a robust backend system to support an **e-commerce hair products catalog**. The backend handles product data management, user authentication, and APIs for filtering, sorting, and pagination, simulating a real-world scenario for backend engineers.  
+This project focuses on developing a robust backend system to support an **e-commerce hair products catalog**.  
+The backend handles:  
+- Product data management  
+- User authentication (JWT)  
+- APIs for filtering, sorting, and pagination  
+- API documentation via Swagger  
 
 ---
 
 ## 🎯 Project Goals  
-- **CRUD APIs**: Build APIs for managing products, categories, and user authentication.  
-- **Filtering, Sorting, Pagination**: Implement robust logic for efficient product discovery.  
-- **Database Optimization**: Design a high-performance database schema to support seamless queries.  
+- **CRUD APIs**: Manage products, categories, orders, reviews, and users  
+- **Filtering, Sorting, Pagination**: Efficient product discovery  
+- **Database Optimization**: High-performance queries with indexing  
+- **Authentication**: Secure access via JWT  
 
 ---
 
 ## 🛠️ Technologies Used  
 - **Django** → scalable backend framework  
-- **PostgreSQL** → optimized relational database  
-- **JWT** → secure authentication system  
-- **Swagger/OpenAPI** → API documentation and testing  
+- **Django REST Framework (DRF)** → API layer  
+- **PostgreSQL** → relational database  
+- **JWT (SimpleJWT)** → authentication system  
+- **Swagger/OpenAPI (drf-yasg)** → API documentation  
+- **python-decouple** → environment variable management  
 
 ---
 
 ## ✨ Key Features  
 1. **CRUD Operations**  
-   - Full create, read, update, delete for products & categories  
-   - JWT-secured user authentication and management  
+   - Products, categories, orders, reviews, and users  
+   - JWT-secured authentication  
 
 2. **API Features**  
-   - **Filtering & Sorting**: Filter products by category, sort by price  
-   - **Pagination**: Efficient navigation of large product datasets  
+   - **Filtering & Sorting**: e.g., filter by category, sort by price  
+   - **Pagination**: Browse large datasets efficiently  
 
-3. **API Documentation**  
-   - Auto-generated with **Swagger**  
-   - Interactive API testing and consumption  
+3. **Authentication**  
+   - Secure login with JWT access & refresh tokens  
+   - Protected endpoints  
+
+4. **API Documentation**  
+   - Interactive Swagger UI and ReDoc  
 
 ---
 
@@ -54,19 +65,19 @@ This case study focuses on developing a robust backend system to support an **e-
 
 ## ✅ Evaluation Criteria  
 1. **Functionality**  
-   - CRUD APIs for products, categories, and user authentication  
-   - Filtering, sorting, and pagination implemented  
+   - CRUD APIs for products, categories, orders, reviews, and authentication  
+   - Filtering, sorting, pagination  
 
 2. **Code Quality**  
-   - Clean, maintainable, and well-documented code  
-   - Proper indexing for database optimization  
+   - Clean, maintainable, well-documented code  
+   - Optimized queries with indexing  
 
 3. **User Experience**  
    - Clear, interactive API documentation  
    - Secure JWT authentication  
 
 4. **Version Control**  
-   - Frequent, descriptive commit messages  
+   - Frequent, descriptive commits  
    - Organized repo structure  
 
 ---
@@ -74,10 +85,10 @@ This case study focuses on developing a robust backend system to support an **e-
 # 🚀 Features  
 - User registration & authentication  
 - JWT-based login (access & refresh tokens)  
-- Protected API endpoints with token validation  
-- PostgreSQL database integration  
-- Environment variable management with `python-decouple`  
-- API documentation with **Swagger** (`drf-yasg`)  
+- Protected endpoints  
+- PostgreSQL integration  
+- Environment management with `.env`  
+- API documentation with **Swagger**  
 
 ---
 
@@ -88,17 +99,18 @@ This case study focuses on developing a robust backend system to support an **e-
 - Simple JWT  
 - PostgreSQL (with psycopg2-binary)  
 - drf-yasg (Swagger UI)  
+- python-decouple  
 
 ---
 
 # 📌 Stages Completed  
 
 ## Stage 1: Environment Setup  
-- Installed tools: Python, PostgreSQL (port 5433), VS Code, Git Bash  
+- Installed: Python, PostgreSQL (port 5433), VS Code, Git Bash  
 - Created Django project `nexus`  
-- Configured PostgreSQL with `.env` file using `python-decouple`  
-- Ran initial migrations & verified Django welcome page  
-- Added `.gitignore` for sensitive files  
+- Configured `.env` with `python-decouple`  
+- Ran migrations & verified Django setup  
+- Added `.gitignore`  
 
 **Testing:**  
 - ✅ `python manage.py migrate`  
@@ -106,45 +118,47 @@ This case study focuses on developing a robust backend system to support an **e-
 
 ---
 
-## Stage 2: Database Design + Django Models  
+## Stage 2: Database Design + Models  
 - Designed ERD for Users, Products, Categories, Orders, Reviews  
 - Implemented models in `store/models.py`:  
   - `Category`, `Product`, `ProductCategory`, `ProductImage`, `Review`, `Order`, `OrderItem`  
 - Added `store` to `INSTALLED_APPS`  
-- Ran migrations & tested with Django shell  
-- Created superuser for Django Admin  
+- Applied migrations  
+- Created superuser for Admin  
 
 ---
 
-## Stage 3: API Development + Testing  
-- Integrated **Django REST Framework**  
-- Built serializers & ViewSets for CRUD  
-- Configured `DefaultRouter` → auto-generated `/api/` endpoints  
-- Tested endpoints with **APITestCase** and Postman  
+## Stage 3: API Development  
+- Integrated DRF  
+- Created serializers & ViewSets  
+- Configured `DefaultRouter` → `/api/` endpoints  
+- Tested with **APITestCase** and Postman  
 
-**Example Endpoints:**  
-- `GET /api/products/` → product list  
+**Endpoints:**  
+- `GET /api/products/` → list products  
 - `POST /api/orders/` → create order  
-- `POST /api/reviews/` → add product review  
+- `POST /api/reviews/` → add review  
 
 ---
 
 ## Stage 4: Authentication (JWT)  
-- Added **Simple JWT** for secure login  
-- Implemented login, refresh, and protected routes  
-- Example endpoints:  
-  - `/api/token/` (login)  
-  - `/api/token/refresh/`  
-  - `/api/users/` (protected)  
+- Added SimpleJWT  
+- Implemented login & refresh  
+- Protected routes  
+
+**Endpoints:**  
+- `/api/token/` (login)  
+- `/api/token/refresh/`  
+- `/api/users/` (protected)  
 
 **Testing:**  
 - Login returns **access & refresh tokens**  
-- Protected endpoints require JWT  
+- Protected endpoints require valid JWT  
 
 ---
 
 ## Stage 5: API Documentation (Swagger)  
-- Installed & configured **drf-yasg**  
+- Installed **drf-yasg**  
 - Auto-generated docs available at:  
   - Swagger UI → `http://127.0.0.1:8000/swagger/`  
   - ReDoc → `http://127.0.0.1:8000/redoc/`  
@@ -156,17 +170,17 @@ This case study focuses on developing a robust backend system to support an **e-
 ---
 
 ## Stage 6: Frontend Integration (🚧 Upcoming)  
-- Plan to integrate **React (Vite)** frontend with Django backend  
+- Planned **React (Vite)** frontend  
 - Features:  
-  - Product catalog browsing  
-  - User login & JWT handling  
-  - Orders & reviews management  
+  - Product browsing  
+  - JWT-based login  
+  - Orders & reviews  
 
 ---
 
 # ⚙️ Setup Instructions  
 
-### 1️⃣ Clone the repository  
+### 1️⃣ Clone the Repository  
 ```bash
 git clone <your-repo-url>
 cd alx-project-nexus
